@@ -1,0 +1,32 @@
+{
+  "name": "bg-egn-helper",
+  "version": "1.0.0",
+  "description": "This project will help users to validate, generate new and extract information from any given valid EGN number",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha --reporter spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vgudzhev/bg-egn-helper.git"
+  },
+  "keywords": [
+    "egn",
+    "validator",
+    "generator",
+    "parser",
+    "bg",
+    "edinen grazhdanski nomer",
+    "bulgaria"
+  ],
+  "author": "Vasil Gudzhev <vgudzhev@gmail.com> (https://vgudzhev.github.io/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vgudzhev/bg-egn-helper/issues"
+  },
+  "homepage": "https://github.com/vgudzhev/bg-egn-helper#readme",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^4.0.1"
+  }
+}
