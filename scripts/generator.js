@@ -5,76 +5,84 @@ module.exports = function() {
      *
      * @return {Boolean}
      */
-    this.generate = function() {
-        // init function
-        var date = generateRandomDate(new Date(1800, 0, 1), new Date(2098, 11, 30));
-        var year = date.getFullYear();
-        var month = date.getMonth();
-        var day = date.getDay();
-        var regionId = generateRandomRegion();
-        var gender = generateRandomGender();
-
-        if (date < new Date(1900, 0, 1)){
-            month += 20;
-    
-        }else if(date > new Date(1999, 11, 31)){
-            month += 40;
-        }
-        // zero based
-        month +=1;
-        day +=1;
-        year = year % 100;
-
-
-        // We set always the first number from interval (eg first new born child)
-        if(regionId % 2 === 0){
-            if(gender === 1) regionId++;
-        }else{
-            if(gender === 0) regionId++;
-        }
-
-        var weights = [2, 4, 8, 5, 10, 9, 7, 3, 6];
-        year = padWithZero(year);
-        month = padWithZero(month);
-        day = padWithZero(day);
-        regionId = padWithZeroes(regionId);
-        // console.log('year' + year); 
-        // console.log('month' + month);
-        // console.log('day' + day);
-        // console.log('regionid' + regionId);
-        var egn = year + '' +
-                   month + '' +
-                   day + '' +
-                  regionId;
-        
-        var checkSum = 0;
-        for(var i = 0; i < weights.length; ++i){
-            checkSum +=  weights[i] * Number(egn.charAt(i)); 
-        }
-
-        checkSum = checkSum % 11;
-        checkSum = checkSum < 10 ? checkSum : 0;
-
-        egn = egn + '' + checkSum;
-
+    this.generate = function(day, month, year, gender, region) {
+ 
+        var args = init(day, month, year, gender, region);
+        var egn = computeValidEGN(args.year, args.month, args.day, args.regionId);
+ 
         return egn;
 
     };
     
-    /**
-     * Generate new Bulgarian EGN code with custom parameters
-     *
-     * 
-     * @param {Integer} day, 1-31
-     * @param {Integer} month 1-12
-     * @param {Integer} year 1800-2099
-     * @param {Integer} gender, 0-male, 1-female
-     * @param {Integer} region 0 - 999
-     */
-    // this.generateCustom = function(day, month, year, gender, region) {
-        
-        
-    // };
+}
+
+function init(day, month, year, gender, region){
+    var args = {};
+
+    if(day && month && year){
+        args.date = new Date(year, month, day);
+    }else{
+        args.date = generateRandomDate(new Date(1917, 0, 1), new Date(2098, 11, 30));
+    }
+
+    args.year = year || args.date.getFullYear();
+    args.month = month || args.date.getMonth();
+    args.day = day || args.date.getDay();
+
+    if (args.date < new Date(1900, 0, 1)){
+        args.month += 20;
+
+    }else if(args.date > new Date(1999, 11, 31)){
+        args.month += 40;
+    }
+
+    // zero based
+    args.month +=1;
+    args.day +=1;
+    args.year = year % 100;
+
+    args.regionId = regionId || generateRandomRegion();
+    args.gender = gender || generateRandomGender();
+
+    args.regionId = initRegion(args.regionId, args.gender);
+
+    return args;
+}
+
+function initRegion(regionId, gender){
+
+    if(regionId % 2 === 0){
+        if(gender === 1) regionId++;
+
+    }else{
+        if(gender === 0) regionId++;
+    }
+
+    return gender;
+}
+
+function computeValidEGN(year, month, day, regionId){
+
+    var weights = [2, 4, 8, 5, 10, 9, 7, 3, 6];
+    year = padWithZero(year);
+    month = padWithZero(month);
+    day = padWithZero(day);
+    regionId = padWithZeroes(regionId);
+
+    var egn = year + '' +
+              month + '' +
+              day + '' +
+              regionId;
+    
+    var checkSum = 0;
+    for(var i = 0; i < weights.length; ++i){
+        checkSum +=  weights[i] * Number(egn.charAt(i)); 
+    }
+
+    checkSum = checkSum % 11;
+    checkSum = checkSum < 10 ? checkSum : 0;
+
+    return egn + '' + checkSum;
 }
 
 // credits to https://stackoverflow.com/questions/9035627/elegant-method-to-generate-array-of-random-dates-within-two-dates
@@ -100,19 +108,19 @@ function padWithZero(number){
 }
 
 function padWithZeroes(number){
-    if(number < 9){
-        return '00' + number;
+    if(number < 1000 && number > 99){
+        return number;
 
-    }else if(number < 99 && number > 9){
+    }else if(number < 100 && number > 9){
         return '0' + number;
     
     }else{
-        return number;
+        return '00' + number;
     }
 }
 // const CODE_BLAGOEVGRAD    = 43; // 000- 043
 // 43: {'bg': 'Благоевград', 'en': 'Blagoevgrad'},  # 000 - 043
-// 93: {'bg': 'Бургас', 'en': 'Burgas'},  # 044 - 093
+// 93: {'bg': 'Бургас', 'en': 'Burgas'},  # 044 - 093 0533 045 047 049 
 // 139: {'bg': 'Варна', 'en': 'Varna'},  # 094 - 139
 // 169: {'bg': 'Велико Търново', 'en': 'Veliko Turnovo'},  # 140 - 169
 // 183: {'bg': 'Видин', 'en': 'Vidin'},  # 170 - 183
