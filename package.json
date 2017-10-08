@@ -1,6 +1,6 @@
 {
   "name": "bg-egn-helper",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "This project will help users to validate, generate new and extract information from any given valid EGN number",
   "main": "index.js",
   "scripts": {
