@@ -1,7 +1,5 @@
-var validator = require('./scripts/validator.js')();
-var generator = require('./scripts/generator.js')();
+const validator = require('./scripts/validator.js')();
+const generator = require('./scripts/generator.js')();
 
-module.exports = {
-    validator,
-    generator
-  }
+module.exports = validator;
+module.exports = generator;
