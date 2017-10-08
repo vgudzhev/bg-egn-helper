@@ -8,7 +8,23 @@ This project will help users to validate, generate new and extract information f
 
 ## Installation
 
+  npm install bg-egn-helper --save
+
 ## Usage
+
+  var helper = require('bg-egn-helper');
+
+  validate('9999999999'); // Will return false
+
+  validateList(['9999999999','9999999999']); // Will return false if any of the given EGN is not valid
+
+  generate(); // Will generate new valid EGN
+
+  generate(2017, 10, 10, 0, 442); // Will generate new valid egn for Male, born in Burgas in 10th of October 2017
+
+## Tests
+
+  npm test
 
 ## Contributing
 
