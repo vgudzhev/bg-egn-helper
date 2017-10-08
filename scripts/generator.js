@@ -1,4 +1,4 @@
-var util = require('./utils/generator-utils.js')();
+var util = require('./utils/generator-helper.js')();
 
 module.exports = function() {
     
