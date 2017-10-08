@@ -5,3 +5,15 @@ A national identification number, national identity number, or national insuranc
 Every citizen or permanent resident of Bulgaria has a unique 10-digit Uniform Civil Number (Bulgarian: Единен граждански номер, Edinen grazhdanski nomer, usually abbreviated as ЕГН, EGN), generated from the person's date of birth (encoded in six digits in the form YYMMDD), followed by a three-digit serial number and a single-digit checksum.
 
 This project will help users to validate, generate new and extract information from any given valid EGN number
+
+## Installation
+
+## Usage
+
+## Contributing
+
+1. Fork it
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create new Pull Request
