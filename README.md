@@ -10,7 +10,7 @@ This project will help users to validate, generate new and extract information f
 
 ## Installation
 
-  npm install https://github.com/vgudzhev/bg-egn-helper.git --save
+  npm install bg-egn-helper --save
 
 ## Usage
 
@@ -27,17 +27,19 @@ This project will help users to validate, generate new and extract information f
 
   generate(2017, 10, 10, 0, 442); // Will generate new valid egn for Male, born in Burgas in 10th of October 2017
 
-  parse(6808070004) // Will return the following object
+  parse(6808070004); // Will return the following object
   
-  // { date:
-  //  { year: 1968,
-  //    month: 'August',
-  //    monthIndex: 8,
-  //    day: 7
-  //   },
-  // region: 'Blagoevgrad',
-  // gender: 'Male' 
-  // }
+  {
+     date:
+   {
+      year: 1968,
+      month: 'August',
+      monthIndex: 8,
+      day: 7
+    },
+  region: 'Blagoevgrad',
+  gender: 'Male' 
+  }
 
 ## Tests
 
