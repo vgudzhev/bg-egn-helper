@@ -5,11 +5,11 @@ const validator = require('./validator.js')();
 module.exports = function() {
     
     /**
-     * 
+     * Parse the EGN and return additional information like born date , region and gender
      *
      * @param {String} egn, Valid egn
      
-     * @return {Object}, Parsed information from an EGN given
+     * @return {Object}, Parsed information from the EGN given
      */
     this.parse = function(egn, locale) {
         locale = locale || 'en';
@@ -41,9 +41,11 @@ function parseDate(egn, locale){
     if (month >= 40) {
         year += 2000;
         month -= 40;
+
     } else if (month >= 20) {
         year += 1800;
         month -= 20;
+        
     } else {
         year += 1900;
     }

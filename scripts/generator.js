@@ -3,7 +3,7 @@ var util = require('./utils/generator-helper.js')();
 module.exports = function() {
     
     /**
-     * Generate new Bulgarian EGN code with by ggiven custom parameters.
+     * Generate new Bulgarian EGN code by given custom parameters.
      * If you do not provide a given parameter it will be random generated
      *
      * @param {String} year, Number 1900-2099
@@ -28,6 +28,7 @@ function init(day, month, year, gender, regionId){
 
     if(day && month && year){
         args.date = new Date(year, month, day);
+
     }else{
         args.date = generateRandomDate(new Date(1917, 0, 1), new Date(2098, 11, 30));
     }
