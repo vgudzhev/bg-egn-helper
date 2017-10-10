@@ -40,6 +40,7 @@ This project will help users to validate, generate new and extract information f
   region: 'Blagoevgrad',
   gender: 'Male' 
   }
+```
 
 ## Tests
 
