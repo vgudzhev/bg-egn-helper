@@ -1,22 +1,18 @@
 module.exports = function() {
     
-    this.generateRandomDate = function(start, end){
-        
+    this.generateRandomDate = function(start, end){      
         return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));        
     }
 
     this.generateRandomRegion = function(){
-        
         return generateNumberInInterval(0, 999);
     }
 
     this.generateRandomGender = function(){
-        
         return generateNumberInInterval(0, 1);
     }
 
     this.padWithZero = function(number){
-        
         return number < 10 ? '0' + number : number;
     }
 
