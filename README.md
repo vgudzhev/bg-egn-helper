@@ -31,15 +31,16 @@ This project will help users to validate, generate new and extract information f
   
   {
      date:
-   {
-      year: 1968,
-      month: 'August',
-      monthIndex: 8,
-      day: 7
-    },
-  region: 'Blagoevgrad',
-  gender: 'Male' 
+     {
+        year: 1968,
+        month: 'August',
+        monthIndex: 8,
+        day: 7
+      },
+    region: 'Blagoevgrad',
+    gender: 'Male' 
   }
+  
 ```
 
 ## Tests
