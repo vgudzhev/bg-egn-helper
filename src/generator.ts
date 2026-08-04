@@ -12,7 +12,7 @@ export function generate(options: GenerateOptions = {}): string {
     do {
       randomDate = new Date(start + Math.random() * (end - start));
       y = year ?? randomDate.getFullYear();
-      m = month ?? (randomDate.getMonth() + 1);
+      m = month ?? randomDate.getMonth() + 1;
       d = day ?? randomDate.getDate();
     } while (!isValidDate(y, m, d));
     year = y;
