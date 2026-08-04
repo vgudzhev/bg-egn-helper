@@ -1,32 +1,69 @@
 {
   "name": "bg-egn-helper",
-  "version": "1.0.1",
-  "description": "This project will help users to validate, generate new and extract information from any given valid EGN number",
-  "main": "index.js",
-  "scripts": {
-    "test": "./node_modules/.bin/mocha --reporter spec"
+  "version": "2.0.0",
+  "description": "Validate, generate, and parse Bulgarian EGN (Единен Граждански Номер) numbers",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
   },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "lint": "eslint src test",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "egn",
+    "bulgarian",
+    "bulgaria",
+    "validator",
+    "generator",
+    "parser",
+    "identification",
+    "civil-number",
+    "edinen-grazhdanski-nomer"
+  ],
+  "author": "Vasil Gudzhev <vgudzhev@gmail.com> (https://vgudzhev.github.io/)",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vgudzhev/bg-egn-helper.git"
   },
-  "keywords": [
-    "egn",
-    "validator",
-    "generator",
-    "parser",
-    "bg",
-    "edinen grazhdanski nomer",
-    "bulgaria"
-  ],
-  "author": "Vasil Gudzhev <vgudzhev@gmail.com> (https://vgudzhev.github.io/)",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/vgudzhev/bg-egn-helper/issues"
   },
   "homepage": "https://github.com/vgudzhev/bg-egn-helper#readme",
+  "engines": {
+    "node": ">=18"
+  },
   "devDependencies": {
-    "chai": "^4.1.2",
-    "mocha": "^4.0.1"
+    "@eslint/js": "^9.0.0",
+    "@vitest/coverage-v8": "^2.0.0",
+    "eslint": "^9.0.0",
+    "prettier": "^3.0.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.5.0",
+    "typescript-eslint": "^8.0.0",
+    "vitest": "^2.0.0"
   }
 }
